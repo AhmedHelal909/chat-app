@@ -1,0 +1,16 @@
+services:
+  chat:
+    build: .
+    container_name: express-ws-chat
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      MAX_FILE_MB: 25
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - chat_uploads:/app/uploads   # uploaded files survive restarts
+    restart: unless-stopped
+
+volumes:
+  chat_uploads:

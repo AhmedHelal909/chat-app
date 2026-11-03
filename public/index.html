@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Login -->
+  <section id="login" class="login">
+    <form id="loginForm" class="login-card">
+      <h1>Join a room</h1>
+      <p class="muted">Pick a name and a room. Share the room name with friends to chat or call.</p>
+      <label>Your name
+        <input id="usernameInput" maxlength="20" required autocomplete="off" />
+      </label>
+      <label>Room
+        <input id="roomInput" maxlength="30" value="general" autocomplete="off" />
+      </label>
+      <p id="loginError" class="error" role="alert"></p>
+      <button class="btn primary" type="submit">Join</button>
+    </form>
+  </section>
+
+  <!-- App -->
+  <main id="app" class="app" hidden>
+    <aside class="sidebar">
+      <h2 id="roomTitle"></h2>
+      <p class="muted small">People here</p>
+      <ul id="usersList" class="users"></ul>
+      <button id="leaveBtn" class="btn ghost" type="button">Leave room</button>
+    </aside>
+
+    <section class="chat">
+      <header class="chat-header">
+        <span id="meLabel" class="muted"></span>
+        <button id="startCallBtn" class="btn primary" type="button">Start video call</button>
+      </header>
+
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <div id="typing" class="typing"></div>
+
+      <form id="messageForm" class="composer">
+        <label class="icon-btn" title="Send a file" aria-label="Send a file">
+          <input id="fileInput" type="file" hidden />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5l-8.6 8.6a5 5 0 01-7-7l8.6-8.6a3.5 3.5 0 015 5L10.4 18a2 2 0 01-3-3l7.8-7.8"/></svg>
+        </label>
+        <input id="messageInput" placeholder="Write a message" maxlength="2000" autocomplete="off" />
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </section>
+
+    <section id="callPanel" class="call" hidden>
+      <div id="videos" class="videos"></div>
+      <div class="call-controls">
+        <button id="micBtn" class="btn" type="button">Mute</button>
+        <button id="camBtn" class="btn" type="button">Camera off</button>
+        <button id="shareBtn" class="btn" type="button">Share screen</button>
+        <button id="hangupBtn" class="btn danger" type="button">Leave call</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
